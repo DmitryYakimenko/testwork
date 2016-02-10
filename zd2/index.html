@@ -1,0 +1,30 @@
+<!doctype>
+<html>
+
+<head>
+    <link href="style.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="ajax.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h2>Список задач для сотрудников: </h2>
+        </div>
+        <div class="content">
+            <input id="task_name" type="text" placeholder="Новая задача">
+            <input id="add-btn" type="button" value="Добавить">
+            <hr>
+            <div id="tasks">
+                <?php foreach( $data as $item ) { ?>
+                <div  id ="<?=$item['task_id']?>" <?php if( $item['is_active']==1 ){?> class="crossed" <?}?> >
+                    <input  id="<?=$item['task_id']?>" type="checkbox" <?php if( $item['is_active']==1 ){?> checked <?}?>>: <?=$item['task_name']?>
+                <h6>Добавлено: <?=$item['task_date']?></h6>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
